@@ -1,0 +1,83 @@
+/* Fonts */
+@font-face {
+	font-family: Lato;
+	font-weight: 100;
+	font-style: normal;
+	src: url('./fonts/Lato-Thin.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 100;
+	font-style: italic;
+	src: url('./fonts/Lato-ThinItalic.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 300;
+	font-style: normal;
+	src: url('./fonts/Lato-Light.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 300;
+	font-style: italic;
+	src: url('./fonts/Lato-LightItalic.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 400;
+	font-style: normal;
+	src: url('./fonts/Lato-Regular.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 400;
+	font-style: italic;
+	src: url('./fonts/Lato-Italic.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 700;
+	font-style: normal;
+	src: url('./fonts/Lato-Bold.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 700;
+	font-style: italic;
+	src: url('./fonts/Lato-BoldItalic.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 900;
+	font-style: normal;
+	src: url('./fonts/Lato-Black.ttf');
+}
+
+@font-face {
+	font-family: Lato;
+	font-weight: 900;
+	font-style: italic;
+	src: url('./fonts/Lato-BlackItalic.ttf');
+}
+
+/* Root */
+:root {
+	--dark_blue: #000026;
+}
+
+/* Resetting all margin and padding */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', 'Arial', 'sans-serif';
+	color: var(--dark_blue);
+}

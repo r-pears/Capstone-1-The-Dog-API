@@ -1,5 +1,7 @@
 from flask import Flask, render_template, flash, redirect
 from forms import UserAddForm
+from models import db, connect_db, User
+from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
 
@@ -8,6 +10,8 @@ app.config['SQLALCHEMY_DATABASE_URL'] = 'postgresql:///dog-app'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
+
+connect_db(app)
 
 
 @app.route('/')

@@ -18,8 +18,8 @@ def homepage():
 
 
 @app.route('/register', methods=["GET", "POST"])
-def signup():
-    """Handle user signup."""
+def register():
+    """Handle user registration."""
 
     form = UserAddForm()
 
@@ -29,7 +29,6 @@ def signup():
                 username=form.username.data,
                 password=form.password.data,
                 email=form.email.data,
-                image_url=form.image_url.data or User.image_url.default.arg,
             )
             db.session.commit()
 

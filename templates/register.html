@@ -5,7 +5,7 @@
 {% block content %}
 
 <h2>Join the Dog Wiki</h2>
-<form method="POST" id="user_form">
+<form method="POST">
   {{ form.hidden_tag() }}
 
   {% for field in form if field.widget.input_type != 'hidden' %}

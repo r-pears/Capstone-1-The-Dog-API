@@ -100,3 +100,19 @@ def logout():
     do_logout()
 
     return redirect("/")
+
+
+@app.route('/user/<int:user_id>')
+def show_user(user_id):
+    """Show user profile."""
+
+    user = User.query.get_or_404(user_id)
+
+    return render_template('user_profile.html', user=user)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """Return a 404 not found page."""
+
+    return render_template('404.html'), 404

@@ -9,8 +9,17 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    {% block content %}
+  <div id="navbar">
+    {% if not g.user %}
+    <a href="/register">Register</a>
+    <a href="/login">Log in</a>
+    {% else %}
+    <a href="/user/{{ g.user.id }}">{{ g.user.username }}</a>
+    {% endif %}
+  </div>
 
-    {% endblock %}
+  {% block content %}
+
+  {% endblock %}
 </body>
 </html>

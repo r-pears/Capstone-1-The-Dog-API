@@ -1,24 +1,54 @@
-from flask import Flask, render_template, flash, redirect
-from forms import UserAddForm
+from flask import Flask, render_template, redirect, session, g
+from forms import UserAddForm, LoginForm
 from models import db, connect_db, User
 from sqlalchemy.exc import IntegrityError
+
+CURRENT_USER_KEY = "current_user"
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'my_secret_key'
-app.config['SQLALCHEMY_DATABASE_URL'] = 'postgresql:///dog-app'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///dog-app'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 
 connect_db(app)
 
+@app.before_request
+def add_user_to_global():
+    """If the user is logged in, add the current user to Flask global."""
+
+    if CURRENT_USER_KEY in session:
+        g.user = User.query.get(session[CURRENT_USER_KEY])
+    
+    else:
+        g.user = None
+    
+
+def do_login(user):
+    """Log in user."""
+
+    session[CURRENT_USER_KEY] = user.id
+
+
+def do_logout():
+    """Log out user."""
+
+    if CURRENT_USER_KEY in session:
+        del session[CURRENT_USER_KEY]
+
 
 @app.route('/')
 def homepage():
     """Show the index page."""
 
-    return render_template('index.html')
+    if g.user:
+
+        return render_template('home.html')
+    
+    else:
+        return render_template('index.html')
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -29,7 +59,7 @@ def register():
 
     if form.validate_on_submit():
         try:
-            user = User.signup(
+            user = User.register(
                 username=form.username.data,
                 password=form.password.data,
                 email=form.email.data,
@@ -37,7 +67,6 @@ def register():
             db.session.commit()
 
         except IntegrityError:
-            flash("Username already taken")
             return render_template('register.html', form=form)
 
         do_login(user)
@@ -46,3 +75,28 @@ def register():
 
     else:
         return render_template('register.html', form=form)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Handle user login."""
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.authenticate_user(form.username.data, form.password.data)
+
+        if user:
+            do_login(user)
+            return redirect('/')
+        
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    """Handle logout of user."""
+    
+    do_logout()
+
+    return redirect("/")

@@ -25,12 +25,12 @@ class User(db.Model):
   def register(cls, username, email, password):
     """Register a new user. Hashes password and adds user."""
 
-    hased_password = bcrypt.generate_password_hash(password).decode('UTF-8')
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf8')
 
     user = User(
       username=username,
       email=email,
-      password=password
+      password=hashed_password
     )
 
     db.session.add(user)

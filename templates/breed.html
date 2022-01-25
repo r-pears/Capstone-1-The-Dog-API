@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body_class %}The Dog Wiki{% endblock %}
+
+{% block content %}
+
+<h1 id="breed">{{dog}}</h1>
+
+<div id="image">
+  
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="../static/javascript/searchDog.js"></script>
+{% endblock %}

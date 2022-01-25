@@ -9,17 +9,30 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-  <div id="navbar">
-    {% if not g.user %}
-    <a href="/register">Register</a>
-    <a href="/login">Log in</a>
-    {% else %}
-    <a href="/user/{{ g.user.id }}">{{ g.user.username }}</a>
-    {% endif %}
+  <div id="navbar" class="flex justify-between">  
+    <div>  
+      <a href="/">  
+        <img src="/static/icon/favicon.svg" height="40px" alt="dog wiki icon">  
+      </a>  
+    </div>  
+    <div class="my-auto">
+      {% if not g.user %}
+      <a href="/register">Register</a>
+      <a href="/login">Log in</a>
+      {% else %}
+      <a href="">Random Dog</a>
+      <p onclick="getAllDogs()">All breeds</p>
+      <a href="">Search for breed</a>
+      <a href="/user/{{ g.user.id }}">{{ g.user.username }}</a>
+      {% endif %}  
+    </div>
   </div>
 
   {% block content %}
 
   {% endblock %}
+
+  <script src="../static/javascript/allDogs.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
 </body>
 </html>

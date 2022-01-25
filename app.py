@@ -112,6 +112,20 @@ def show_user(user_id):
     return render_template('user_profile.html', user=user)
 
 
+@app.route('/breeds')
+def show_breeds():
+    """Show a list of all breeds."""
+
+    return render_template('breeds.html')
+
+
+@app.route('/breed/<string:dog_name>', methods=['GET'])
+def show_specific_breed(dog_name):
+    """Show information about a specific breed."""
+
+    return render_template('breed.html', dog=dog_name)
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     """Return a 404 not found page."""

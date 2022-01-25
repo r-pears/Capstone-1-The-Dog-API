@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, session, g
+from flask import Flask, render_template, redirect, session, g, request, jsonify
+import requests
 from forms import UserAddForm, LoginForm
 from models import db, connect_db, User
 from sqlalchemy.exc import IntegrityError

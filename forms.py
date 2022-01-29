@@ -16,3 +16,17 @@ class LoginForm(FlaskForm):
 
   username = StringField('Username', validators=[DataRequired()])
   password = PasswordField('Password', validators=[Length(min=6)])
+
+
+class SearchBreed(FlaskForm):
+  """Form for searching for a breed."""
+
+  name = StringField('Name of Breed', validators=[DataRequired()])
+
+
+class EditProfile(FlaskForm):
+  """Form for updating profile."""
+
+  username = StringField('Your username', validators=[DataRequired()])
+  email = StringField('E-mail', validators=[DataRequired(), Email()])
+  password = PasswordField('Password')

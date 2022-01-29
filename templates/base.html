@@ -20,10 +20,11 @@
       <a href="/register">Register</a>
       <a href="/login">Log in</a>
       {% else %}
-      <a href="">Random Dog</a>
+      <a href="/random">Random Dog</a>
       <a href="/breeds">All breeds</a>
-      <a href="">Search for breed</a>
+      <a href="/search">Search for breed</a>
       <a href="/user/{{ g.user.id }}">{{ g.user.username }}</a>
+      <a href="/logout">Logout</a>
       {% endif %}  
     </div>
   </div>

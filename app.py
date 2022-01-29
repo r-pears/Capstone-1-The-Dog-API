@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, session, g, request, jsonify
 import requests
-from forms import UserAddForm, LoginForm
+from forms import UserAddForm, LoginForm, SearchBreed, EditProfile
 from models import db, connect_db, User
 from sqlalchemy.exc import IntegrityError
 
@@ -124,6 +124,43 @@ def show_specific_breed(dog_name):
     """Show information about a specific breed."""
 
     return render_template('breed.html', dog=dog_name)
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search_breed():
+    """Search for a breed."""
+
+    form = SearchBreed()
+
+    return render_template('search.html', form=form)
+
+
+@app.route('/random', methods=['GET', 'POST'])
+def random_breed():
+    """Search for a breed."""
+
+    return render_template('random.html')
+
+
+@app.route('/edit/username', methods=['GET', 'POST'])
+def update_profile():
+    """Search for a breed."""
+
+    if not g.user:
+        return redirect('/')
+
+    user = g.user
+    form = EditProfile(obj=user)
+
+    if form.validate_on_submit():
+        if User.authenticate_user(user.username, form.password.data):
+            user.username = form.username.data
+            user.email = form.email.data
+
+            db.session.commit()
+            return redirect(f"/users/{user.id}")
+
+    return render_template('edit.html', form=form, user_id=user.id)
 
 
 @app.errorhandler(404)

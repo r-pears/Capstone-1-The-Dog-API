@@ -4,6 +4,12 @@
 
 {% block content %}
 
+  <h1>{{ user.username }}</h1>
 
+  <div>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <button><a href="/edit/username">Edit profile</a></button>
+  </div>
 
 {% endblock %}

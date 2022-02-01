@@ -112,7 +112,7 @@ def show_user(user_id):
     return render_template('user_profile.html', user=user)
 
 
-@app.route('/breeds')
+@app.route('/breeds', methods=['GET'])
 def show_breeds():
     """Show a list of all breeds."""
 
@@ -126,13 +126,11 @@ def show_specific_breed(dog_name):
     return render_template('breed.html', dog=dog_name)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET'])
 def search_breed():
     """Search for a breed."""
 
-    form = SearchBreed()
-
-    return render_template('search.html', form=form)
+    return render_template('search.html')
 
 
 @app.route('/random', methods=['GET', 'POST'])

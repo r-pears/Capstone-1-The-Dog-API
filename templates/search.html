@@ -5,21 +5,16 @@
 {% block content %}
 
 <h2>Search for a dog breed</h2>
-<form method="POST">
-  {{ form.hidden_tag() }}
 
-  {% for field in form if field.widget.input_type != 'hidden' %}
-    {% for error in field.errors %}
-          <span>{{ error }}</span>
-    {% endfor %}
-    {{ field(placeholder=field.label.text, class="form-control") }}
-  {% endfor %}
+<div>
+  <input id="search" type="text">
+  <button onclick="searchBreed()">Find my dog!</button>
+</div>
 
-  <button onclick="findMyDog()">Find my dog</button>
-</form>
+<div>
+  <ul id="search-result">
 
-<div id="search-result">
-  
+  </ul>
 </div>
 
 <script src="https://unpkg.com/axios/dist/axios.js"></script>

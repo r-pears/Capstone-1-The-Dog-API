@@ -18,21 +18,26 @@
     <div class="my-auto">
       {% if not g.user %}
       <a href="/register">Register</a>
-      <a href="/login">Log in</a>
+      <a class="left_padding" href="/login">Log in</a>
       {% else %}
-      <a href="/random">Random Dog</a>
-      <a href="/breeds">All breeds</a>
-      <a href="/search">Search for breed</a>
-      <a href="/user/{{ g.user.id }}">{{ g.user.username }}</a>
-      <a href="/logout">Logout</a>
+      <a class="left_padding" href="/random">Random Dog</a>
+      <a class="left_padding" href="/breeds">All breeds</a>
+      <a class="left_padding" href="/search">Search for breed</a>
+      <a class="left_padding" href="/user/{{ g.user.id }}">{{ g.user.username }}</a>
+      <a class="left_padding" href="/logout">Logout</a>
       {% endif %}  
     </div>
   </div>
 
-  {% block content %}
+  <div class="content">
+    {% block content %}
 
-  {% endblock %}
+    {% endblock %}    
+  </div>
 
+  <div id="footer">
+    Copyright &copy; <a href="https://github.com/r-pears">r-pears</a>, for Springboard 2022.
+  </div>
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
 </body>
 </html>

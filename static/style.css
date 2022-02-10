@@ -80,11 +80,17 @@
 	padding: 0;
 	font-family: 'Lato', 'Arial', 'sans-serif';
 	color: var(--dark_blue);
+	overflow-x: hidden;
 }
 
 /* Flex */
 .flex {
 	display: flex;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
 }
 
 .justify-between {
@@ -100,14 +106,130 @@
 	margin: 0 auto;
 }
 
-/* Fluid classes */
+.left_padding {
+	padding-left: 20px;
+}
+
+.top_padding {
+	padding-top: 20px;
+}
+
+.top_margin {
+	margin-top: 20px;
+}
+
+.bottom_margin {
+	margin-bottom: 20px;
+}
 
 /* Navbar */
+#navbar {
+	padding: 40px;
+	background-color: #000;
+	color: #B1B1B8;
+}
+
+#navbar a {
+	text-decoration: none;
+	color: #B1B1B8;
+}
+
+#navbar a:hover {
+	color: #F8F8F8;
+}
 
 /* Footer */
+#footer {
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+	background-color: #0D0F14;
+	color: #B1B1B8;
+	padding: 40px;
+}
+
+#footer a {
+	color: #B1B1B8;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	color: #F8F8F8;
+}
 
 /* Dog data page */
 .dog-image {
 	width: 500px;
 	height: auto;
+}
+
+/* Content */
+.content {
+	height: calc(100vh - 300px);
+	padding: 75px;
+}
+
+#pet_group {
+	width: 90vw;
+	height: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #98b1ff;
+}
+
+input {
+	width: 70%;
+	margin-top: 20px;
+	height: 45px;
+	padding-left: 10px;
+	border-radius: 0 5px;
+	border: 1px solid #000026;
+}
+
+:focus {
+	outline: none;
+}
+
+.button {
+	background-color: #98b1ff;
+	border: 1px solid #98b1ff;
+	color: #fff;
+	width: 145px;
+	height: 45px;
+	border-radius: 5px;
+}
+
+.button:hover {
+	background-color: #fff;
+	color: #000026;
+}
+
+.page_not_found {
+	background-image: url('/static/image/paws.jpg');
+	background-repeat: no-repeat;
+	background-position-y: center;
+	background-size: contain;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+/* Media queries */
+@media screen and (max-width:499px) {
+	.left_padding {
+		padding-left: 10px;
+	}
+
+	.content {
+		padding: 15px;
+	}
+
+	#navbar, 
+	#footer {
+		padding: 15px;
+	}
 }

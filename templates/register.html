@@ -5,7 +5,7 @@
 {% block content %}
 
 <h2>Join the Dog Wiki</h2>
-<form method="POST">
+<form class="top_padding flex-col" method="POST">
   {{ form.hidden_tag() }}
 
   {% for field in form if field.widget.input_type != 'hidden' %}
@@ -15,7 +15,7 @@
     {{ field(placeholder=field.label.text, class="form-control") }}
   {% endfor %}
 
-  <button>Sign me up!</button>
+  <button class="button top_margin">Sign me up!</button>
 </form>
 
 {% endblock %}

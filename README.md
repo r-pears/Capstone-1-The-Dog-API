@@ -26,7 +26,7 @@ python3 -m venv venv
 To run the virtual environment locally:
 source venv/bin/activate
 
-To install dependencies run
+To install dependencies run:
 pip3 install -r requirements.txt
 
 Install and download PostgreSQL from https://www.postgresql.org/
@@ -34,7 +34,7 @@ Install and download PostgreSQL from https://www.postgresql.org/
 To create the database:
 createdb dog-app
 
-To run the app
+To run the app:
 flask run
 
 # Technologies
